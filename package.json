@@ -1,0 +1,27 @@
+{
+  "name": "generator-flyapp",
+  "version": "0.0.0",
+  "description": "Yeoman generator FlyApp",
+  "license": "MIT",
+  "main": "app/index.js",
+  "repository": "ennett50/generator-flyapp",
+  "author": {
+    "name": "ennet",
+    "email": "ennet@mail.ru",
+    "url": "https://github.com/ennett50"
+  },
+  "files": [
+    "app"
+  ],
+  "keywords": [
+    "yeoman-generator"
+  ],
+  "dependencies": {
+    "yeoman-generator": "^0.19.0",
+    "chalk": "^1.0.0",
+    "yosay": "^1.0.2"
+  },
+  "devDependencies": {
+    "gulp": "^3.8.9"
+  }
+}
