@@ -1,4 +1,4 @@
-# generator-flyapp [![Build Status](https://travis-ci.org/ennett50/generator-flyapp)
+# generator-flyapp 
 
 > [Yeoman](http://yeoman.io) generator
 
