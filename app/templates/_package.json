@@ -1,5 +1,12 @@
 {
-  "name": "package",
-  "version": "0.0.0",
-  "dependencies": {}
+  "name": "<%= appname %>",
+  "version": "<%s= pkg.version %>",
+  "description": "It's a project created for Frontender Magazine's article",
+  "devDependencies": {
+    "grunt": "~0.4.2"
+  },
+  "keywords": [
+    "<%= appname %>"
+  ],
+  "license": "MIT"
 }

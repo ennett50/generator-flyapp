@@ -12,8 +12,11 @@ module.exports = function (grunt) {
         yeoman: {
             app: 'app'
         },
-        watch: 
-
+        watch: {<% if (sass) { %>
+            sass: {
+                files: ['<%%= yeoman.app %>/scss/{,*/}*.{scss,sass}'<% if (framework == 'foundation') { %>, '<%%= yeoman.app %>/bower_components/foundation/scss/{,*/}*.{scss,sass}'<% } %>],
+                tasks: ['sass:server'<% if (autoprefixer) { %>, 'autoprefixer:server'<% } %>]
+            },<% } %>
             livereload: {
                 options: {
                     livereload: '<%%= connect.options.livereload %>'
@@ -42,7 +45,21 @@ module.exports = function (grunt) {
                     ]
                 }
             }
-        }
+        },<% if (sass) { %>
+        sass: {
+            options: {
+                includePaths: [<% if (framework == 'foundation') { %>'<%%= yeoman.app %>/bower_components/foundation/scss' <% } %>]
+            },
+            server: {
+                options: {
+                    outputStyle: 'nested',
+                    sourceComments: 'normal'
+                },
+                files: {
+                    '<%%= yeoman.app %>/css/main.css': '<%%= yeoman.app %>/scss/main.scss'
+                }     
+            }
+        },<% } %><% if (autoprefixer) { %>
         autoprefixer: {
             options: {
                 browsers: ['last 1 version']
@@ -55,7 +72,7 @@ module.exports = function (grunt) {
                     dest: '<%%= yeoman.app %>/css/'
                 }]
             }
-        },
+        },<% } %>
         svgmin: {
             files: [{
                 expand: true,
@@ -63,7 +80,7 @@ module.exports = function (grunt) {
                 src: '{,*/}*.svg',
                 dest: '<%%= yeoman.app %>/img'
             }]
-        },
+        },<% if (modernizr) { %>
         modernizr: {
             devFile: '<%%= yeoman.app %>/bower_components/modernizr/modernizr.js',
             outputFile: '<%%= yeoman.app %>/bower_components/modernizr/modernizr.js',
@@ -80,12 +97,13 @@ module.exports = function (grunt) {
                 '!<%%= yeoman.app %>/js/vendor/*'
             ],
             uglify: true
-        }
+        }<% } %>
     });
 
     grunt.registerTask('server', function (target) {
-        grunt.task.run(
-            'autoprefixer:server',
+        grunt.task.run([<% if (sass) { %>
+            'sass:server',<% } %><% if (autoprefixer) { %>
+            'autoprefixer:server',<% } %>
             'connect:livereload',
             'watch'
         ]);
