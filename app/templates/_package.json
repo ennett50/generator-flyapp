@@ -1,16 +1,5 @@
 {
-  "name": "<%= appname %>",
-  "version": "<%= pkg.version %>",
-  "description": "It's a project created for testing",
-  "devDependencies": {
-    "grunt": "~0.4.2",
-    "grunt-contrib-connect": "~0.5.0",
-    "grunt-svgmin": "~0.3.0",
-    "load-grunt-tasks": "~0.2.0",
-    "time-grunt": "~0.2.3"
-  },
-  "keywords": [
-    "<%= appname %>"
-  ],
-  "license": "MIT"
+  "name": "package",
+  "version": "0.0.0",
+  "dependencies": {}
 }
